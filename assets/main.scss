@@ -1,0 +1,17 @@
+---
+---
+
+@import "{{ site.theme }}";
+
+.post-title {
+    border-bottom: 0 !important;
+}
+
+h1 {
+    font-size: 32px;
+    border-bottom: 1px solid #a2a9b1;
+}
+
+h2 {
+    font-size: 24px !important;
+}

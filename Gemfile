@@ -26,3 +26,5 @@ end
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 
 gem "github-pages", "~>192", group: :jekyll_plugins
+
+# gem "colorator", "~>1.0"
