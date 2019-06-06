@@ -20,9 +20,9 @@ is a math problem, and the solution is a number (or an expression evaluating to 
 There are over eighty puzzles in total, sorted by difficulty, that can be solved in
 any order you wish. They range from easy puzzles that can be solved by logic alone
 to difficult problems that probably require some background in probability theory.
-If a problem isn't difficult enough, you can try doing all the arithmetics in your head.
-Some puzzles may be difficult if you haven't studied probability. The app is simple but
-well-done, the puzzles are intriguing, error-free and some are nicely illustrated.
+If a problem isn't difficult enough, you can try doing all the arithmetic in your head.
+The app is simple but well-done, the puzzles are intriguing, error-free and some are
+nicely illustrated.
 
 ![Probability Math Puzzles](/assets/2018-11_android-games/probability.png)
 
