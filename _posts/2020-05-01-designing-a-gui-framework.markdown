@@ -7,9 +7,9 @@ categories: programming
 
 Designing UI libraries is hard. System integration, accessibility, styling, those are difficult to do properly. But this article is about something much harder. Designing a good UI from the developer's point of view.
 
-Here is a fun fact: **developers hate writing user interfaces**. For good reasons: it is difficult, time-consuming and boring. That's why most personal projects are text-based, even though a GUI would perhaps be a better fit. Is UI programming really that difficult? Or do our UI frameworks simply suck?
+Here is a fun fact: **developers hate writing user interfaces**. For good reasons: it is difficult, time-consuming and boring. That's why most personal projects are text-based, even though a GUI would perhaps be a better fit. Is UI programming really that difficult? Or do GUI frameworks make it harder than it needs to be?
 
-In this article, I will argue that the latter is true: it's not inherently difficult to write UIs, if you have the right toolset. I will dive into the design rationale behind such a toolset, **Concur**. Concur enables you to write complex applications, as well as write quick throw-away GUI scripts, in much the same way you would write console scripts in Python. With Concur, simple applications can be written just in a few lines of code, and complex applications are just as difficult as they need to be, not more.
+In this article, I will argue that the latter is true: it's not inherently difficult to write GUIs, if you have the right toolset. I will dive into the design rationale behind such a toolset, **Concur**. Concur enables you to write complex applications, as well as write quick throw-away GUI scripts, in much the same way you would write console scripts in Python. With Concur, simple applications can be written just in a few lines of code, and complex applications are just as difficult as they need to be, not more.
 
 # Problem Analysis
 
@@ -321,7 +321,7 @@ Also, to an extent, it has been done before. The Elm Architecture and React+Redu
 
  We identified the simplest atomic constructs which are still sufficient for UI creation. In doing so, we arrived at a surprisingly simple, yet powerful abstraction around widget composition. This abstraction allows us to be simultaneously simpler and more powerful than well-known libraries, such as React/Redux and Elm. And **way** simpler than MVC event-driven UI libraries.
 
- To make composition more pleasant to work with, language constructs such as generator syntax, or do-notation are used. This works in a range of different languages, as demonstrated by the [multiple](https://github.com/ajnsit/concur) [variations](https://github.com/purescript-concur/purescript-concur-react) of the [Concur](https://github.com/ajnsit/concur-js) [library](https://github.com/potocpav/python-concur).
+ To make composition more pleasant to work with, language constructs such as generator syntax, or do-notation are used. This works in a range of different languages, as demonstrated by the multiple variations of the Concur library.
 
  For more thorough documentation & usage examples, see the project pages of concrete Concur variants. [Purescript Concur](https://github.com/ajnsit/purescript-concur) and [Python Concur](https://github.com/potocpav/python-concur) are the most actively maintained ones at the moment.
 
