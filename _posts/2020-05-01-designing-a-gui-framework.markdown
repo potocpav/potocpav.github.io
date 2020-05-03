@@ -68,7 +68,7 @@ Widget a
 
 where the type `Widget` is parametrized by the (arbitrary) event type `a`.  A text box would be `Widget String`, a checkbox would be `Widget Boolean`, and a color picker would be `Widget Color`.
 
-This reflects the fact that event type is the **only** thing we need to know about widgets to compose them. Otherwise, they are opaque to the rest of the program. They have no accessible state, no methods. Compared to object-oriented widget frameworks, this is simpler by [orders of magnitude](https://doc.qt.io/qt-5/qlist.html).
+This reflects the fact that event type is the **only** thing we need to know about widgets to compose them. Otherwise, widgets are opaque to the rest of the program. They have no accessible state, no methods. Compared to object-oriented widget frameworks, this is simpler by [orders of magnitude](https://doc.qt.io/qt-5/qlist.html).
 
 ## Composition in space
 
@@ -99,7 +99,7 @@ It turns out that this pattern of having `alt` and `map` is useful in general, a
 
 ## Composition in Time
 
-Let's now examine **composition in time**. As stated above, widgets that come later depend on the results of earlier widgets. Our composition operator will take two widgets, where the **second one is created from the result of the first one**. It returns yet another widget:
+Let's now examine composition in time. As stated above, widgets that come later depend on the results of earlier widgets. Our composition operator will take two widgets, where the **second one is created from the result of the first one**. It returns yet another widget:
 
 ```haskell
 bind :: Widget a -> (a -> Widget b) -> Widget b
@@ -114,7 +114,7 @@ bind :: Widget a -> (a -> Widget b) -> Widget b
 
 The resulting widget has the event type `b`, which is the event type of the **second** widget. Event `a` is only used internally to generate `Widget b`, and it isn't visible to the user of the `bind` result. This is the reason we don't need to limit ourselves to a single event type, as we did with `alt`: our types remain simple regardless.
 
-It turns out that this kind of composition is also useful in general, and it is called the [**monadic composition**](https://hackage.haskell.org/package/base-4.12.0.0/docs/Prelude.html#t:Monad).
+It turns out that this kind of composition is also useful in general, and it is called the [**monadic composition**](https://pursuit.purescript.org/packages/purescript-prelude/4.1.1/docs/Control.Bind#t:Bind).
 
 # Putting it All Together
 
@@ -223,9 +223,9 @@ Python has a permissive type system, so the shenanigans we did with universal qu
 What **is** a problem is painless composition in time using `bind`. We do not want to end up in a nested function mess like this:
 
 ```python
-hello_world = bind(text_input("Name:"),
-    lambda name: bind(text_input("Surname:"),
-        lambda surname: text(f"Hello, {name} {surname}!")
+hello_world = bind(button("Show Another Button"),
+    lambda name: bind(button("Another Button"),
+        lambda surname: text(f"Clicked Another Button!")
         )
     )
 ```
@@ -234,13 +234,13 @@ We need to have syntax sugar for composition in time, similarly to Purescript. L
 
 ```python
 def hello_world():
-    name = yield from text_input("Name:")
+    name = yield from button("Show Another Button")
     yield
 
-    surname = yield from text_input("Surname:")
+    surname = yield from button("Another Button")
     yield
 
-    yield from text(f"Hello, {name} {surname}!")
+    yield from text(f"Clicked Another Button!"")
 ```
 
 The `yield` statements are a wart, caused by inflexibility of Python generators. There are other issues I couldn't work around, but they are mostly cosmetic too:
@@ -322,7 +322,7 @@ Also, to an extent, it has been done before. The Elm Architecture and React+Redu
 [^type_syntax]: `Widget a` in Haskell would be `Widget<T>` in C++.
 [^function_syntax]: The `a :: b` notation signifies that `a` has the type of `b`. Functions with multiple arguments are notated as `f :: a -> b -> c -> ...`, where the type after the last arrow is the return type.
 [^join]: We first `map` both widgets to the same type `Widget (Either a b)`, then we compose them with `alt`. In Purescript, it could be written as `join a b = alt (map Left a) (map Right b)`.
-[^nesting]: I haven't mentioned widgets nested in other widgets. This is not a thing we will abstract, because there are multiple possibilities of how things are nested. If a widget contains other widgets, it will take them as arguments during construction.
+[^nesting]: I haven't mentioned widgets nested in other widgets. This is not a thing we will abstract, because there are multiple possibilities of how things can be nested. If a widget contains other widgets, it will take them as arguments during construction.
 [^widget_type]: The actual type is a bit more complicated: `Widget HTML T`. We can ignore `HTML`, as it just enables using multiple back-ends.
 [^conceptually]: Conceptually, but that would be a bit slow. The list is actually merged inside a single function.
 [^bind]: After syntax sugar expansion, the code is `bind (D.div' [...]) (\n -> counterWidget n)`, where `\n -> ...` is a lambda function.
