@@ -299,6 +299,14 @@ tea s render update = go s where
 
 This function is more of a curiosity, because you can use The Elm Architecture directly, without any glue code whatsoever.
 
+Using the Elm architecture is the most obvious way to program in Concur. It looks something like this:
+
+1. **View**: You create a widget tree from application state using spatial composition. The simple event types of widgets are transformed into one big event type, which represents all the events your component or application supports. This is forced by the nature of Concur, as it insists on spatially composing only widgets with the same event type.
+2. **Update**: These events are passed by the temporal composition primitives into an update "widget", which takes the old application state and an event, and produces new application state.
+3. The new application state is passed recursively, or by a loop, back into **View**.
+
+You can create multiple independent View-Update loops in your application, effectively separating different components at arbitrary granularity. This naturally leads to flexible and clean design, even in complex applications.
+
 
 # Why hasn't it been done before?
 
