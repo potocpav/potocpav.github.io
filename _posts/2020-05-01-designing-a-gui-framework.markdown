@@ -224,8 +224,8 @@ What **is** a problem is painless composition in time using `bind`. We do not wa
 
 ```python
 hello_world = bind(button("Show Another Button"),
-    lambda name: bind(button("Another Button"),
-        lambda surname: text("Clicked Another Button!")
+    lambda _: bind(button("Another Button"),
+        lambda _: text("Clicked Another Button!")
         )
     )
 ```
@@ -234,10 +234,10 @@ We need to have syntax sugar for composition in time, similarly to Purescript. L
 
 ```python
 def hello_world():
-    name = yield from button("Show Another Button")
+    yield from button("Show Another Button")
     yield
 
-    surname = yield from button("Another Button")
+    yield from button("Another Button")
     yield
 
     yield from text("Clicked Another Button!")
