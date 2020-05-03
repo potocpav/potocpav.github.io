@@ -225,7 +225,7 @@ What **is** a problem is painless composition in time using `bind`. We do not wa
 ```python
 hello_world = bind(button("Show Another Button"),
     lambda name: bind(button("Another Button"),
-        lambda surname: text(f"Clicked Another Button!")
+        lambda surname: text("Clicked Another Button!")
         )
     )
 ```
@@ -240,7 +240,7 @@ def hello_world():
     surname = yield from button("Another Button")
     yield
 
-    yield from text(f"Clicked Another Button!"")
+    yield from text("Clicked Another Button!")
 ```
 
 The `yield` statements are a wart, caused by inflexibility of Python generators. There are other issues I couldn't work around, but they are mostly cosmetic too:
