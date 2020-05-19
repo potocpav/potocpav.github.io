@@ -26,6 +26,7 @@ assets:
   sources:
   - qr
 markdown: kramdown
+mathjax: true
 theme: minima
 plugins_dir:
   - jekyll-feed
