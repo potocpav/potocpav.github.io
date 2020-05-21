@@ -100,7 +100,7 @@ $$\mathtt{Result} \sim a$$
 $$\mathtt{int} \sim 2^{32}$$
 
 
-$$\left(\mathtt{Result,\:Int}\right)\sim2^{32}\cdot a$$
+$$\left(\mathtt{Result,\:int}\right)\sim2^{32}\cdot a$$
 
 Let's split off one value from the `int` to signalize the error ($b\leq2^{32}-1$):
 
