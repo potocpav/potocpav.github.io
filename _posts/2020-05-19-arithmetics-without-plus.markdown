@@ -41,7 +41,7 @@ $$\mathtt{Object}\sim a + 1,$$
 
 where $a$ is the number of inhabitants of `Object`. This reflects the fact that the variable of type `Object` can be either `null`, or a proper instance. This pattern is commonly used for error handling. In case an operation fails, a `null` is returned.
 
-There is, however,  problem with this approach. One value often isn't enough. We really want the result of a function to be either a value, or an error. Both of these may be complicated types. This is a common requirement, and also precisely what **sum types** are for. Let's invent a hypothetical syntax for them. The return value of a parser may be for example `Result | String`, signifying that the parser returns either `Result`, or a `String` with an error message. The `Result | String` type has all the inhabitants from both constituent types.
+There is, however, a problem with this approach. One error value often isn't enough. We really want a function to be either a value, or an error. Both of these may be complicated types. This is a common requirement, and also precisely what **sum types** are for. Let's invent a hypothetical syntax for them. The return value of a parser may be for example `Result | String`, signifying that the parser returns either `Result`, or a `String` with an error message. The `Result | String` type has all the inhabitants from both constituent types.
 
 $$\mathtt{Result} \sim a$$
 
