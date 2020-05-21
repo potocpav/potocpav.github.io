@@ -33,7 +33,7 @@ These 8 values can be enumerated exhaustively:
 
 Tuples and structs are actually sometimes called **product types**, which reflects our little arithmetic. You can check for yourself that it works also with other type combinations.
 
-So types correspond to **numbers**, and tuples/structs correspond to **products**. It would definitely have a much nicer ring to it if we also had **sums**. Turns out sum types exist, but not in all programming languages. They are commonly known as tagged unions. But there's no fun in those. Let's start with something most programming languages actually have: **nullable types**. Also known as the [billion dollar mistake](https://medium.com/@hinchman_amanda/null-pointer-references-the-billion-dollar-mistake-1e616534d485).
+So types correspond to **numbers**, and tuples/structs correspond to **products**. It would definitely have a much nicer ring to it if we also had **sums**. Turns out sum types exist, but not in all programming languages. They are commonly known as tagged unions. But there's no fun in those. Let's start with something most programming languages actually have: **nullable types**. Also known as the [billion dollar mistake](https://en.wikipedia.org/wiki/Tony_Hoare#Apologies_and_retractions).
 
 Say we have a non-nullable type with `a` inhabitants. If we make it nullable, we have one extra value to put inside: `null`. The type becomes `a + 1`. There is our first sum type. For example, all Java objects are nullable.
 
@@ -53,7 +53,7 @@ That "+" above is why it is called a "sum type".
 
 ## Funky Arithmetics
 
-How do mainstream languages return realize this pattern of returning either X, or Y without the support for proper sum types? By doing some funky arithmetics with product types, of course. In other words:
+How do mainstream languages realize this pattern of returning either X, or Y without the support for proper sum types? By doing some funky arithmetics with product types, of course. In other words:
 
 <div style="text-align: center; border: 1px solid black; margin: 1em; padding: 1em; font-style: italic;">How do you add numbers, when all you know is multiplication?</div>
 
