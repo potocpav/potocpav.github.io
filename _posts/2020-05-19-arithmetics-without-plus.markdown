@@ -57,7 +57,7 @@ How do mainstream languages realize this pattern of returning either X, or Y wit
 
 <div style="text-align: center; border: 1px solid black; margin: 1em; padding: 1em; font-style: italic;">How do you add numbers, when all you know is multiplication?</div>
 
-Of course, this can't be done precisely. But we can afford to be imprecise. We only need the sum type equivalent to $a+b$ to be representable by our hypothetical multiplication-based type equivalent to, say, $n$. In other words:
+This obviously can't be done precisely. But we can afford to be imprecise. We only need the sum type equivalent to $a+b$ to be representable by our hypothetical multiplication-based type equivalent to, say, $n$. In other words:
 
 $$n\geq a+b.$$
 
