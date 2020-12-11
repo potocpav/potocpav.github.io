@@ -1,7 +1,7 @@
 ---
 layout: post
 title:  "Precise Typing Implies Functional Programming"
-date:   2020-12-12 14:30:00 +0100
+date:   2020-12-11 14:30:00 +0100
 categories: programming
 ---
 
@@ -283,7 +283,3 @@ The extra effort manifests in three ways:
 
 Perhaps unintuitively, pinning your domain down with precise types doesn't decrease flexibility. Rather, types allow you to encode the requirements of your functions, but nothing extra. Functional code can be amazingly expressive. -->
 
-## See Also
-
-* [[83d4b42b|OOP Deconstruction]]
-* [[79be9c2a|OOP Notes]]
