@@ -124,7 +124,7 @@ This result is clearly incorrect, and it is because the `leq` is not a total ord
 sort :: Ord a => [a] -> [a]
 ```
 
-The `Ord` constraint tells us that we have an `≤` which forms a total order over `a`. In Rust, there is an equivalent pattern, this time in-place:
+The `Ord` constraint tells us that we have an `≤` which forms a total order over `a`. In Rust, there is an equivalent pattern, this time sorting in place:
 
 ```rust
 impl<T> Vec<T> {
