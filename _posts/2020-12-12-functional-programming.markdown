@@ -219,7 +219,7 @@ If some of these are not satisfied, `sort` behaviour may not be what we expect. 
 [4, nan, 1, 2]
 ```
 
-This result is clearly incorrect, and it is because the `leq` is not a total order over IEEE 754 floats: it doesn't satisfy connexity. We need a way to encode this requirement into the type system, otherwise these kinds of bugs can't be prevented. This is what typeclasses/traits are used for. In Haskell:
+This result is clearly incorrect, and it is because `leq` is not a total order over IEEE 754 floats: it doesn't satisfy connexity. We need a way to encode this requirement into the type system, otherwise these kinds of bugs can't be prevented. This is what typeclasses/traits are used for. In Haskell:
 
 ```haskell
 sort :: Ord a => [a] -> [a]
@@ -233,7 +233,7 @@ impl<T> Vec<T> {
 }
 ```
 
-And indeed, `Ord` is not implemented for floats, which prevents the patological case above. Users of `sort` and orderable types can rest assured that they can't mess up the composition.
+And indeed, `Ord` is not implemented for floats, which prevents the patological use-case above. Users of `sort` and orderable types can rest assured that they can't mess up the composition.
 
 For a different example, suppose we want to make a parralel array sum function. This function splits the array into N sub-arrays, sums up each one in a thread, and finally sums the sub-results together. To get the same result regardless of the number of sub-arrays, our sum operation must be associative. We can express this by using the `Semigroup a` constraint which provides us with an associative operation over `a`.
 
@@ -241,7 +241,7 @@ For a different example, suppose we want to make a parralel array sum function. 
 parallelSum :: Semigroup a => [a] -> a
 ```
 
-We need to use algebraic structures, such as a semigroup or a total order, to precisely specify types of functions whose correctness depends on the satisfaction of specific laws relating values and functions. We got quite deep this time, but this is the conclusion:
+We need to use algebraic structures, such as a semigroup or a total order, to precisely specify types of functions whose correctness depends on the satisfaction of specific laws relating values and functions. This is the conclusion:
 
 <p class="banner">
 <b>Algebraic structures</b> are the consequence of using types to precisely encode program semantics.
@@ -251,19 +251,19 @@ This pattern of having algebraic structures with associated laws is ubiquitous i
 
 ## Immutable Values
 
-If we limit ourselves to only pure functions, mutability is no longer very useful. Functions can't access anything but their arguments, and those can't be modified. This means that mutability is confined only to function bodies, where it can serve as a convenience. Some languages use function calls instead of `for` and `while` loops, which prevents the few remaining use-cases for mutable values. Immutability follows naturally from the other functional programming concepts we discussed earlier.
+If we limit ourselves to only pure functions, mutability is no longer very useful. Functions can't access anything but their arguments, and those can't be modified. This means that mutability is confined only to function bodies, where it can serve as a convenience. Some languages use function calls instead of `for` and `while` loops, which prevents the few remaining use-cases for mutable values. Thus, immutability follows naturally from the other functional programming concepts we discussed earlier.
 
 That said, mutable output arguments can be useful. I don't see a problem with this alternative, as long as they are explicitly marked. It doesn't weaken the expresiveness of function signatures and can be used, for example, to achieve greater performance. In Rust, mutable arguments are marked in the function signatures **and** at the call-sites, which makes information flow very obvious.
 
 ## Higher-order Functions
 
-There is probably an argument for how common HOFs like map, filter, or reduce help enhance type safety, but this article is too long already so I'm going to take the easy way out.
+There is probably an argument for how common HOFs like `map`, `filter`, or `reduce` help enhance type safety, but this article is too long already so I'm going to take the easy way out.
 
 The use of higher-order functions (HOFs) in functional programming can be seen as the consequence of the above features. Functional purity forces the use of HOFs to describe even simple concepts like sequential actions. And because of pure functions and algebraic laws, it is safe and pleasant to work with HOFs. This leads to HOFs being used pervasively in functional programming, and thus, being associcated with functional style.
 
 ## Notes on OOP
 
-Object oriented programming encourages both imprecise data types, and non-descriptive functional signatures.
+Object oriented programming is a particularly bad offender when it comes to imprecise types, since it encourages both imprecise data types and non-descriptive functional signatures.
 
 **Imprecise data types** arise because classes frequently contain many fields which themselves are poorly typed. This is caused by:
 
