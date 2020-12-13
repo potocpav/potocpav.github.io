@@ -208,9 +208,9 @@ leq(T, T) -> Bool // less or equal, ≤
 
 The correctness of `sort` depends crucially on the semantics of `leq`: it can't be any old function, it must be a [total order](https://en.wikipedia.org/wiki/Total_order). It must satisfy the following relations:
 
-* Antisymmetry. If `a ≤ b` and `b ≤ a` then `a = b`.
-* Transitivity. If `a ≤ b` and `b ≤ c` then `a ≤ c`.
-* Connexity. `a ≤ b` or `b ≤ a`.
+* **Antisymmetry**. If `a ≤ b` and `b ≤ a` then `a = b`.
+* **Transitivity**. If `a ≤ b` and `b ≤ c` then `a ≤ c`.
+* **Connexity**. `a ≤ b` or `b ≤ a`.
 
 If some of these are not satisfied, `sort` behaviour may not be what we expect. In Python, for example, the following happens:
 
