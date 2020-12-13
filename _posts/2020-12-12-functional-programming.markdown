@@ -169,7 +169,7 @@ Let's take a step back and examine why this is the case. The type of a function,
 
 These interactions must be well documented and kept in mind by the programmers since the type system cannot help us. If side effects are not used sparingly, function signatures lose their descriptiveness.
 
-To fix the `map` example above, we must have a way to enforce the "non-interfering, stateless" property at the type level. We call this property **purity**, and pure functions interact with the outside world *exclusively* through their arguments and return types. Without purity, we can't assign precise types to higher-order functions. Functions that use side effects to wreak havoc will always creep into our types.
+To fix the `map` example above, we must have a way to enforce the "non-interfering, stateless" property at the type level. We call this property **purity**, and pure functions interact with the outside world *exclusively* through their arguments and return types. Without purity, we can't assign precise types to higher-order functions: functions that use side effects to wreak havoc will always creep into our types.
 
 We have no choice but to limit ourselves to pure functions, and it follows that
 
