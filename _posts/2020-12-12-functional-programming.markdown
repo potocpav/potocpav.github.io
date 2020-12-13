@@ -138,7 +138,7 @@ ADTs are one way to precisely model type semantics. Without proof[^1], I will as
 
 ## Pure Functions
 
-We have reigned in the correctness of our data types using ADTs. Continuing the example from the previous section, we can, for example, define a function which returns a string if the JSON represents one:
+We have ensured the correctness of our data types using ADTs. Continuing the example from the previous section, we can, for example, define a function which returns a string if the JSON represents one:
 
 ```rust
 fn to_array(json: Json) -> Option<String> {
