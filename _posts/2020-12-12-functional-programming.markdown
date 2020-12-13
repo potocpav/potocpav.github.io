@@ -145,7 +145,7 @@ ADTs are one way to precisely model type semantics. Without proof[^1], I will as
 
 ## Pure Functions
 
-Continuing the example from the previous section, let's define a function in Rust which returns a string if the JSON represents one:
+Continuing the example from the previous section, let's define a function in Rust which returns a string represented by the given JSON:
 
 ```rust
 fn to_array(json: Json) -> Option<String> {
