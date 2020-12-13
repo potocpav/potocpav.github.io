@@ -59,7 +59,7 @@ $$\text{functional programming} ⇏ \text{precise types}.$$
 
 <!-- Indeed, one can arrive at functional programming from multiple directions, as is the case with many other good ideas. -->
 
-Given that the value of precise typing is evident, I will focus on arguing that FP indeed follows from precise typing in the following sections. In the following sections, I will try to show how each of the signature FP features serves to make types more precise.
+I will argue that FP indeed follows from precise typing in the following sections. In the following sections, I will try to show how each of the signature FP features serves to make types more precise.
 
 ## Algebraic Data Types
 
