@@ -130,7 +130,7 @@ Notice how the `Json` enum is public: there are no invariants. It is impossible 
 
 Rust enumerations are algebraic data types, and they enable us to model semantics much more precisely than plain structs. This shifts responsibility from the programmer to the type checker, and allows us to write more reliable software. Here I showed just one example, but surprisingly many different objects can be precisely described using ADTs.
 
-To sum up, ADTs are a way to precisely model type semantics. Without proof^[If I'm wrong on this, please point it out in the comments.], I will assert that they are actually the **only** way: you need a construct of (at least) equivalent power to hope for precise types.This would mean that we have the first piece of the puzzle:
+To sum up, ADTs are a way to precisely model type semantics. Without proof^[1], I will assert that they are actually the **only** way: you need a construct of (at least) equivalent power to hope for precise types.This would mean that we have the first piece of the puzzle:
 
 <p class="banner">
 ADTs are the consequence of using types to precisely encode program semantics.
@@ -312,6 +312,7 @@ The main take-away is that functional programming does one thing better than oth
 
 Showing that this is not the case, and showing how effectful systems can be written in a purely functional style may be the topic of a future blog post.
 
+[^2] If I'm wrong on this, please point it out in the comments.
 
 <!-- We will not consider argument names and function name as parts of function signature - their correspondence to semantics can't be checked by the compiler. Let me write down an example in C++:
 
