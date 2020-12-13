@@ -138,7 +138,7 @@ ADTs are one way to precisely model type semantics. Without proof[^1], I will as
 
 ## Pure Functions
 
-Continuing the example from the previous section, let's, define a function in Rust which returns a string if the JSON represents one:
+Continuing the example from the previous section, let's define a function in Rust which returns a string if the JSON represents one:
 
 ```rust
 fn to_array(json: Json) -> Option<String> {
@@ -163,7 +163,7 @@ This function works correctly for any `json` no matter what it is, or where it c
 <R> Stream<R> map(Function<? super T, ? extends R> mapper);
 ```
 
-The `map` method takes the function `mapper` to produce a transformed stream of values. Does `map` work for correctly for all choices or `mapper`? No. In fact, this is duly stated in the comment above: `mapper` must be a "[non-interfering, stateless function](https://docs.oracle.com/javase/8/docs/api/java/util/stream/package-summary.html#NonInterference)". If this condition is not satisfied, bad stuff can happen including data races, exceptions, and incorrect or non-deterministic results. We have once again found an imprecise type which is inhabited by more values than are semantically valid. We have to rely on our dilligence to ensure that the invariants hold.
+The `map` method takes the function `mapper` to produce a transformed stream of values. Does `map` work for correctly for any choice or `mapper`? No. In fact, this fact is duly stated in the comment above: `mapper` must be a "[non-interfering, stateless function](https://docs.oracle.com/javase/8/docs/api/java/util/stream/package-summary.html#NonInterference)". If this condition is not satisfied, bad stuff can happen including data races, exceptions, and incorrect or non-deterministic results. We have once again found an imprecise type which is inhabited by more values than are semantically valid. We have to rely on our dilligence to ensure that the invariants hold.
 
 Let's take a step back and examine why this is the case. The type of a function, called **function signature**, consists of **argument types** and the **return type**[^3]. Argument types specify the prerequisites, and the return type specifies the effects (results) of the function. However, there are escape hatches: functions can also perform various side-effects not captured by the signature. They can typically
 
