@@ -9,8 +9,10 @@ Functional programming (FP) is, similarly to other programming paradigms, quite 
 
 * Functions are treated as first-class citizens. They are frequently passed as arguments to other functions.
 * Immutable values are preferred over mutable values.
+* Algebraic data types and pattern matching.
 * Functions are pure. They are deterministic and side-effect-free, similarly to mathematical functions.
 * Algebraic structures are used as abstractions.
+
 
 Seeing the value of these characteristics is not easy, however. Each of them must be argued separately, and it can be difficult to make a solid case for their utility, especially to a person who is used to programming in a different paradigm. How can we convince fellow developers that all the functional weirdness is warranted? I will try to present an unified argument for all the FP characteristics in this article.
 
