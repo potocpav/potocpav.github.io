@@ -172,7 +172,7 @@ This function works correctly for any `json` no matter what it is, or where it c
 
 The `map` method takes the function `mapper` to produce a transformed stream of values. Does `map` work for correctly for any choice or `mapper`? No. This fact is duly stated in the comment above: `mapper` must be a "[non-interfering, stateless function](https://docs.oracle.com/javase/8/docs/api/java/util/stream/package-summary.html#NonInterference)". If this condition is not satisfied, bad stuff can happen including data races, exceptions, and incorrect or non-deterministic results. We have once again found an imprecise type which is inhabited by more values than are semantically valid. We have to rely on our dilligence to ensure that the invariants hold.
 
-Let's take a step back and examine why this is the case. The type of a function, called **function signature**, consists of **argument types** and the **return type**[^3]. Argument types specify the prerequisites, and the return type specifies the effects (results) of the function. However, there are escape hatches: functions can also perform various side-effects not captured by the signature. They can typically
+Let's take a step back and examine why this is the case. The type of a function, called **function signature**, consists of **argument types** and the **return type**[^3]. Argument types specify the prerequisites, and the return type specifies the results of the function. However, there are escape hatches: functions can also perform various side-effects not captured by the signature. They can typically
 
 * Access global variables, static variables, or instance variables,
 * Access external resources such as PRNG state, network state, file IO, console, etc.,
@@ -181,7 +181,7 @@ Let's take a step back and examine why this is the case. The type of a function,
 
 These interactions must be well documented and kept in mind by the programmers since the type system cannot help us. If side effects are not used sparingly, function signatures lose their descriptiveness.
 
-To fix the "`map`" example above, we must have a way to enforce the "non-interfering, stateless" property at the type level. We call this property "**purity**", and pure functions interact with the outside world *exclusively* through their arguments and return types. Without purity, we can't assign precise types to higher-order functions. Functions that use side effects to wreak havoc will always creep into our types. We have no choice but to limit ourselves to pure functions, and it follows that
+To fix the `map` example above, we must have a way to enforce the "non-interfering, stateless" property at the type level. We call this property **purity**, and pure functions interact with the outside world *exclusively* through their arguments and return types. Without purity, we can't assign precise types to higher-order functions. Functions that use side effects to wreak havoc will always creep into our types. We have no choice but to limit ourselves to pure functions, and it follows that
 
 <p class="banner">
 <b>Pure functions</b> are the consequence of using types to precisely encode program semantics.
