@@ -5,6 +5,14 @@ date:   2020-12-11 14:30:00 +0100
 categories: programming
 ---
 
+<style>
+body {
+    font-family: "Merriweather", serif !important;
+    font-size: 1.1em !important;
+    line-height: 2em !important;
+}
+</style>
+
 Functional programming (FP) is, similarly to other programming paradigms, quite difficult to pin down. Instead of having a clear definition, these characteristics are commonly associated with functional style:
 
 * Functions are treated as first-class citizens. They are frequently passed as arguments to other functions.
