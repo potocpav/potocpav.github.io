@@ -4,7 +4,6 @@ title:  "Precise Typing Implies Functional Programming"
 date:   2020-12-11 14:30:00 +0100
 categories: programming
 ---
-
 Functional programming (FP) is, similarly to other programming paradigms, quite difficult to pin down. Instead of having a clear definition, these characteristics are commonly associated with functional style:
 
 * Functions are treated as first-class citizens. They are frequently passed as arguments to other functions.
@@ -26,7 +25,17 @@ It turns out that all of the above points can be derived from a single design ru
 
 <!-- There is an underlying characteristic hidden beneath the usual functional programming patterns. The characteristics above can be seen merely as effects of this characteristic, and its value is rather self-evident. Without further ado, here it is: -->
 
-<p style="font-weight: bold; font-size: larger; padding: 0.5rem; margin: 1rem; border: 1px solid black; text-align: center;">
+<style>
+.banner {
+    font-weight: bold;
+    font-size: larger;
+    padding: 0.5rem;
+    margin: 1rem;
+    border: 1px solid black;
+    text-align: center;
+}
+</style>
+<p style="font-weight: bold; font-size: larger; padding: 0.5rem; margin: 1rem; border: 1px solid black; text-align: center;" class="banner">
 Functional programming is the consequence of using types to precisely encode program semantics.
 </p>
 
@@ -42,8 +51,110 @@ $$\text{functional programming} ⇏ \text{precise types}.$$
 
 <!-- Indeed, one can arrive at functional programming from multiple directions, as is the case with many other good ideas. -->
 
-Given that the value of precise typing is self-evident, I will focus on arguing that FP indeed follows from precise typing in the following sections.
+Given that the value of precise typing is self-evident, I will focus on arguing that FP indeed follows from precise typing in the following sections. In the following sections, I will try to show how each of the signature FP features serves to make types more precise.
 
+## Algebraic Data Types
+
+Data types allow us to specify what values an expression might take. We want types to match semantics as precisely as possible. They would ideally allow all valid values while disallowing all invalid values. Algebraic data types (ADTs) provide us with a rich vocabulary to construct precise types in many scenarios.
+
+For example, say we want to specify a type representing a JSON value.
+
+```c++
+// This is a JSON value.
+JSON json;
+```
+
+What we don't want is a JSON value with a fine print attached:
+
+```c++
+// This is a JSON value¹
+// ¹ or an inconsistent thing with undefined behavior on access
+JSON json;
+```
+
+We can have a look at how this is done in practice. Here is how one might represent a JSON value in C++. Code is adapted and simplified from the popular [nlohmann's JSON library](https://github.com/nlohmann/json):
+
+```c++
+enum class value_t {
+    null, boolean, number_float, integer, string, array, object,
+};
+
+union json_value {
+    bool boolean;
+    double number_float;
+    std::int64_t number_integer;
+    std::string *string;
+    std::vector<json> *array;
+    std::map<std::string, json> *object;
+}
+
+class json {
+    value_t m_type;
+    json_value m_value;
+}
+```
+
+Consider what needs to be ensured for `json` to represent a valid JSON value:
+
+* `m_type` must be an integer less than 7.
+* `m_type` must correspond to the type of `m_value`.
+* For a string, array, and object, `json_value` must be a valid pointer.
+* Above points must be satisfied on all depth levels, since `json` is a tree structure.
+
+These requirements are commonly known as **invariants**, and they are precisely the **rules that aren't captured by the type system**; they must be upheld by the programmer. Indeed, the `json` library [documents some of them in comments](https://github.com/nlohmann/json/blob/97fe455ad5dd889ed30cf23bc735bb038ef67435/include/nlohmann/json.hpp#L150-L155) and provides [functions to check their validity](https://github.com/nlohmann/json/blob/97fe455ad5dd889ed30cf23bc735bb038ef67435/include/nlohmann/json.hpp#L1227-L1233). To further facilitate safety, `m_type` and `m_value` are private, so only code internal to the JSON library must be careful about invariants.
+
+This a compromise rather than the ideal case. We must trust the library internals to correctly uphold all the invariants. Nlohmann's JSON library contains more than 10,000 lines of code with access to the private fields of `json`, so this is definitely not a trivial concern!
+
+Invariants arise from the inability of the type system. If we were able to construct a type which contains **only** valid JSON values, all these problems would disappear. We could expose data directly, since every value is valid by construction. There is no longer a trusted code-base, no assertions, tests or comments about invariants, we only need to trust the type-checker. Behold the Rust JSON representation, adapted from the canonical [serde library](https://github.com/serde-rs/json):
+
+```rust
+pub enum Json {
+    Null,
+    Bool(bool),
+    Integer(i64),
+    Float(f64),
+    String(String),
+    Array(Vec<Json>),
+    Object(Map<String, Json>),
+}
+```
+
+Rust `enum` is an union type which contains precisely one of the listed options:
+
+* Either a `Null`,
+* or a `Bool` with a single `bool` value,
+* or an `Integer` with an `i64` value,
+* etc.
+
+Notice how the `Json` enum is public: there are no invariants. It is impossible to construct invalid values.
+
+Rust enumerations are algebraic data types, and they enable us to model semantics much more precisely than plain structs. This shifts responsibility from the programmer to the type checker, and allows us to write more reliable software. Here I showed just one example, but surprisingly many different objects can be precisely described using ADTs.
+
+To sum up, ADTs are a way to precisely model type semantics. Without proof^[If I'm wrong on this, please point it out in the comments.], I will assert that they are actually the **only** way: you need a construct of (at least) equivalent power to hope for precise types.This would mean that we have the first piece of the puzzle:
+
+<p class="banner">
+ADTs are the consequence of using types to precisely encode program semantics.
+</p>
+
+
+
+## Pure Functions
+
+ToDo
+
+
+## Algebraic Structures
+
+ToDo
+
+## Immutable Values
+
+ToDo
+
+## Higher-order Functions
+
+ToDo
+<!--
 ## Types of Values
 
 Types define (among other things) the set of all possible values a variable can take. Precise types constrain variables to only semantically valid values. Types should, ideally, contain no semantically invalid values.
@@ -191,6 +302,8 @@ Notice how function signatures are devoid of any information - every function ha
 
 In a purely functional setting, this can't happen. Any pure function which returns `void` is useless since it conveys no information in its return value. As a rule of thumb, even in non purely functional setting, `void`-returning functions should rarely be used.
 
+-->
+
 ## Conclusion
 
 We have seen how the characteristics of functional programming arise from insisting on descriptive types. Using the type system to its full potential decreases the number of bugs and allows one write code much more confidently.
@@ -282,4 +395,3 @@ The extra effort manifests in three ways:
 3. Day-to-day programming overhead. This is probably negligible.
 
 Perhaps unintuitively, pinning your domain down with precise types doesn't decrease flexibility. Rather, types allow you to encode the requirements of your functions, but nothing extra. Functional code can be amazingly expressive. -->
-
