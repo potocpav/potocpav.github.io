@@ -44,7 +44,7 @@ It turns out that all of the above points can be derived from a single design ru
 }
 </style>
 <p style="font-weight: bold; font-size: larger; padding: 0.5rem; margin: 1rem; border: 1px solid black; text-align: center;" class="banner">
-<b>Functional programming is the consequence of using types to precisely encode program semantics.</b>
+Functional programming is the consequence of using types to precisely encode program semantics.
 </p>
 
 If you agree that type systems should be used to their full potential, functional programming is not much of a paradigm - it is rather just a natural consequence. And it is quite uncontroversial to see that type systems should be wielded efficiently to prevent bugs and maximize correctness. That's, after all, precisely what they were designed to do in the first place.
