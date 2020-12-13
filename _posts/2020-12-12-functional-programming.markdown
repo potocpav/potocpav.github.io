@@ -7,7 +7,6 @@ categories: programming
 
 <style>
 body {
-    font-family: "Merriweather", serif !important;
     font-size: 1.1em !important;
     line-height: 2em !important;
 }
