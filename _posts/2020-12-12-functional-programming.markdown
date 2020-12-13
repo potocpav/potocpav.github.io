@@ -135,7 +135,7 @@ Rust `enum` is an union type which contains precisely one of the specified alter
 * or an `Integer` with an `i64` value,
 * etc.
 
-Notice how the `Json` enum is public: there are no invariants. It is impossible to construct invalid `Json` values. Rust enumerations, which are an example of an algebraic data type, enable us to model semantics much more precisely than plain structs. This shifts responsibility from the programmer to the type checker, and allows us to write more reliable software. Here I showed just one example, but surprisingly many different objects can be precisely described using ADTs.
+Notice how the `Json` enum is public. It can be, because there are no invariants. It is impossible to construct invalid `Json` values. Rust enumerations, which are an example of an algebraic data type, enable us to model semantics much more precisely than plain structs. This shifts responsibility from the programmer to the type checker, and allows us to write more reliable software. Here I showed just one example, but surprisingly many different objects can be precisely described using ADTs.
 
 ADTs are one way to precisely model type semantics. Without proof[^1], I will assert that they are actually the **only** way: you need a feature of (at least) equivalent power to hope for precise types. This would mean that we have the first piece of the puzzle:
 
@@ -265,14 +265,14 @@ The use of higher-order functions (HOFs) in functional programming can be seen a
 
 Object oriented programming is a particularly bad offender when it comes to imprecise types, since it encourages both imprecise data types and non-descriptive functional signatures.
 
-**Imprecise data types** arise because classes frequently contain many fields which themselves are poorly typed. This is caused by:
+**Imprecise data types** arise because classes frequently contain too many fields which themselves are poorly typed. This is caused by:
 
 * OOP mental model of "thing == instance" is often not granular enough.
-* Uninitialized states [are sometimes unavoidable](https://250bpm.com/blog:4/).
-* Nullability pervasiveness in mainstream OOP languages.
 * Inheritance brings unnecessary baggage.
+* Uninitialized states [are sometimes unavoidable](https://250bpm.com/blog:4/).
+* Nullability is pervasive in mainstream OOP languages.
 
-Often, tons invalid states are possible in classes, and keeping everything consistent is a **major** challenge.
+Often, tons invalid states are possible in class instances, and keeping everything consistent is a **major** challenge.
 
 **Non-descriptive functional signatures** are given by the fact that functions have blanket access to instance variables. This is the same as passing in a bunch of mostly unnecessary arguments, which goes against descriptive function types. Worse, functions may work mainly through instance state manipulation instead of through return values. This leads to non-descriptive types, and by trying to compensate, to overly descriptive names. Ever seen code that looks like this excerpt from Clean Code?
 
@@ -308,7 +308,7 @@ In a purely functional setting, this can't happen. Any pure function which retur
 
 We have seen how different characteristics of functional programming arise from insisting on descriptive types. The main take-away is that functional programming does one thing better than other approaches: it better utilizes the type system.
 
-This doesn't mean that FP is overall better for software development. Perhaps in the process of being pedantic with types we arrived at a paradigm that is too impractical for everyday use. Discussing whether this the case, and showing how effectful systems can be written in a purely functional style may be the topic of a future blog post.
+This doesn't mean that FP is overall better for software development. Perhaps in the process of being pedantic with types we arrived at a paradigm that is too impractical for everyday use. Discussing whether this the case, and showing how effectful systems can be written in a purely functional style, may be the topic of a future blog post.
 
 [^1]: If I'm wrong on this, please point it out in the comments.
 [^2]: C++ equivalent could exhibit undefined behavior if some of the invariants were broken.
