@@ -183,7 +183,7 @@ To fix the "`map`" example above, we must have a way to enforce the "non-interfe
 Many languages nowadays allow marking pure functions as such: `const fn` in Rust, `constexpr` in C++, `pure` in D, etc. This capability tends to be, unfortunately, too limiting to be used for the types of higher-order function arguments. The only general-purpose languages that use pure functions pervasively are from the Haskell family. In Haskell, as a matter of fact, all functions are pure. And sure enough, no comments are needed in Haskell to specify how the mapping function should behave, as all functions of the correct type are valid.
 
 ```haskell
--- | O(n). `map f xs` is the list obtained by applying
+-- O(n). `map f xs` is the list obtained by applying
 -- `f` to each element of `xs`.
 map :: (a -> b) -> [a] -> [b]
 ```
