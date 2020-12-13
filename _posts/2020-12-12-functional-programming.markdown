@@ -21,17 +21,7 @@ Functional programming (FP) is, similarly to other programming paradigms, quite 
 
 Seeing the value of these characteristics is not easy, however. Each of them must be argued separately, and it can be difficult to make a solid case for their utility, especially to a person who is used to programming in a different paradigm. How can we convince fellow developers that all the functional weirdness is warranted? I will try to present an unified argument for all the FP characteristics in this article.
 
-<!--
-* Why should I use first-class functions rather than first-class objects?
-* Isn't function composition unnecessarily cryptic in comparison to simple sequential statements?
-* Purity is valuable, but aren't side-effects sometimes more natural?
--->
-
-<!-- Functional programming arises in a number of ways. I will explore, how functional programming follows from strong typing. This illustrates nicely why various FP concepts are useful, as they help us leverage the type system in an optimal way. -->
-
 It turns out that all of the above points can be derived from a single design rule.
-
-<!-- There is an underlying characteristic hidden beneath the usual functional programming patterns. The characteristics above can be seen merely as effects of this characteristic, and its value is rather self-evident. Without further ado, here it is: -->
 
 <style>
 .banner {
@@ -170,7 +160,7 @@ This function works correctly for any `json` no matter what it is, or where it c
 <R> Stream<R> map(Function<? super T, ? extends R> mapper);
 ```
 
-The `map` method takes the function `mapper` to produce a transformed stream of values. Does `map` work for correctly for any choice or `mapper`? No. This fact is duly stated in the comment above: `mapper` must be a "[non-interfering, stateless function](https://docs.oracle.com/javase/8/docs/api/java/util/stream/package-summary.html#NonInterference)". If this condition is not satisfied, bad stuff can happen including data races, exceptions, and incorrect or non-deterministic results. We have once again found an imprecise type which is inhabited by more values than are semantically valid. We have to rely on our dilligence to ensure that the invariants hold.
+The `map` method takes the function `mapper` to produce a transformed stream of values. Does `map` work for correctly for any choice or `mapper`? No. This fact is duly stated in the comment above: `mapper` must be a "[non-interfering, stateless function](https://docs.oracle.com/javase/8/docs/api/java/util/stream/package-summary.html#NonInterference)". If this condition is not satisfied, bad stuff can happen including data races, exceptions, and incorrect or non-deterministic results. We have once again found an imprecise type which is inhabited by more values than are semantically valid. We have to rely on our diligence to ensure that the invariants hold.
 
 Let's take a step back and examine why this is the case. The type of a function, called **function signature**, consists of **argument types** and the **return type**[^3]. Argument types specify the prerequisites, and the return type specifies the results of the function. However, there are escape hatches: functions can also perform various side-effects not captured by the signature. They can typically
 
@@ -233,9 +223,9 @@ impl<T> Vec<T> {
 }
 ```
 
-And indeed, `Ord` is not implemented for floats, which prevents the patological use-case above. Users of `sort` and orderable types can rest assured that they can't mess up the composition.
+And indeed, `Ord` is not implemented for floats, which prevents the pathological use-case above. Users of `sort` and orderable types can rest assured that they can't mess up the composition.
 
-For a different example, suppose we want to make a parralel array sum function. This function splits the array into N sub-arrays, sums up each one in a thread, and finally sums the sub-results together. To get the same result regardless of the number of sub-arrays, our sum operation must be associative. We can express this by using the `Semigroup a` constraint which provides us with an associative operation over `a`.
+For a different example, suppose we want to make a parallel array sum function. This function splits the array into N sub-arrays, sums up each one in a thread, and finally sums the sub-results together. To get the same result regardless of the number of sub-arrays, our sum operation must be associative. We can express this by using the `Semigroup a` constraint which provides us with an associative operation over `a`.
 
 ```haskell
 parallelSum :: Semigroup a => [a] -> a
@@ -253,13 +243,13 @@ This pattern of having algebraic structures with associated laws is ubiquitous i
 
 If we limit ourselves to only pure functions, mutability is no longer very useful. Functions can't access anything but their arguments, and those can't be modified. This means that mutability is confined only to function bodies, where it can serve as a convenience. Some languages use function calls instead of `for` and `while` loops, which prevents the few remaining use-cases for mutable values. Thus, immutability follows naturally from the other functional programming concepts we discussed earlier.
 
-That said, mutable output arguments can be useful. I don't see a problem with this alternative, as long as they are explicitly marked. It doesn't weaken the expresiveness of function signatures and can be used, for example, to achieve greater performance. In Rust, mutable arguments are marked in the function signatures **and** at the call-sites, which makes information flow very obvious.
+That said, mutable output arguments can be useful. I don't see a problem with this alternative, as long as they are explicitly marked. It doesn't weaken the expressiveness of function signatures and can be used, for example, to achieve greater performance. In Rust, mutable arguments are marked in the function signatures **and** at the call-sites, which makes information flow very obvious.
 
 ## Higher-order Functions
 
 There is probably an argument for how common HOFs like `map`, `filter`, or `reduce` help enhance type safety, but this article is too long already so I'm going to take the easy way out.
 
-The use of higher-order functions (HOFs) in functional programming can be seen as the consequence of the above features. Functional purity forces the use of HOFs to describe even simple concepts like sequential actions. And because of pure functions and algebraic laws, it is safe and pleasant to work with HOFs. This leads to HOFs being used pervasively in functional programming, and thus, being associcated with functional style.
+The use of higher-order functions (HOFs) in functional programming can be seen as the consequence of the above features. Functional purity forces the use of HOFs to describe even simple concepts like sequential actions. And because of pure functions and algebraic laws, it is safe and pleasant to work with HOFs. This leads to HOFs being used pervasively in functional programming, and thus, being associated with functional style.
 
 ## Notes on OOP
 
@@ -301,14 +291,14 @@ private void includeSetupPage() throws Exception {
 
 Notice how function signatures are devoid of any information - every function has the exact same signature! Any of the statements can be duplicated, deleted, or rearranged without the compiler complaining. Control flow is fully implicit and the type system is all but useless. Luckily, this hardcore OOP style [is on the decline](https://qntm.org/clean).
 
-In a purely functional setting, this can't happen. Any pure function which returns `void` is useless since it conveys no information in its return value. As a rule of thumb, even in non purely functional setting, `void`-returning functions should probably rarely be used.
+In a purely functional setting, this can't happen. Any pure function which returns `void` is useless since it conveys no information in its return value. As a rule of thumb, even in a non purely functional setting, `void`-returning functions should probably rarely be used.
 
 
 ## Conclusion
 
 We have seen how different characteristics of functional programming arise from insisting on descriptive types. The main take-away is that functional programming does one thing better than other approaches: it better utilizes the type system.
 
-This doesn't mean that FP is overall better for software development. Perhaps in the process of being pedantic with types we arrived at a paradigm that is too impractical for everyday use. Discussing whether this the case, and showing how effectful systems can be written in a purely functional style, may be the topic of a future blog post.
+This doesn't mean that FP is overall better for software development. Perhaps in the process of being pedantic with types we arrived at a paradigm that is too impractical for everyday use. Discussing whether this is the case, and showing how effectful systems can be written in a purely functional style, may be the topic of a future blog post.
 
 [^1]: If I'm wrong on this, please point it out in the comments.
 [^2]: C++ equivalent could exhibit undefined behavior if some of the invariants were broken.
