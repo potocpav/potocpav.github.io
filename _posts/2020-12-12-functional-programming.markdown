@@ -46,7 +46,7 @@ The converse isn't true, as FP is also possible in weakly-typed languages:
 
 $$\text{functional programming} ⇏ \text{precise types}.$$
 
-I will argue that FP indeed follows from precise typing in the following sections. In the following sections, I will try to show how each of the signature FP features serves to make types more precise.
+In the following sections, I will try to show how each of the signature FP features serves to make types more precise.
 
 ## Algebraic Data Types
 
