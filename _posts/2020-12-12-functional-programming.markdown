@@ -93,7 +93,7 @@ Consider what needs to be ensured for `json` to represent a valid JSON value:
 
 1. `m_type` must be an integer less than 7.
 2. `m_type` must correspond to the type of `m_value`.
-3. For a string, array, and object, `json_value` must be a valid pointer.
+3. For a string, array, and object, `m_value` must be a valid pointer.
 4. Above points must be satisfied on all depth levels, since `json` is a tree structure.
 
 These requirements are commonly known as **invariants**, and they are precisely the **rules that aren't captured by the type system**; they must be upheld by the programmer. Indeed, the `json` library [documents some of them in comments](https://github.com/nlohmann/json/blob/97fe455ad5dd889ed30cf23bc735bb038ef67435/include/nlohmann/json.hpp#L150-L155) and provides [functions to check their validity](https://github.com/nlohmann/json/blob/97fe455ad5dd889ed30cf23bc735bb038ef67435/include/nlohmann/json.hpp#L1227-L1233). To further facilitate safety, `m_type` and `m_value` are private, so only the code inside the JSON library must be careful about invariants.
