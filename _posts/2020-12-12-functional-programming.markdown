@@ -188,14 +188,6 @@ Many languages nowadays allow marking pure functions as such: `const fn` in Rust
 map :: (a -> b) -> [a] -> [b]
 ```
 
-## Higher-order Functions
-
-ToDo: higher-order functions and purity go hand-in-hand.
-
-<!-- map, filter, reduce -->
-
-<!-- Purely functional IO requires pervasive use of higher-order functions, which is another FP characteristic. -->
-
 ## Algebraic Structures
 
 Now we have precise value and function types, but that is not enough. We also need a way to specify relations between them. Consider, for example, a sorting algorithm. It consists of a function `sort` together with a less-or-equal operator `leq`:
@@ -248,49 +240,32 @@ We need to use algebraic structures, such as a semigroup or a total order, to pr
 
 This pattern of having algebraic structures with associated laws is ubiquitous in functional programming, and there are many well-known algebraic structures. In OOP languages, interfaces or classes could be used to the same effect, however, they have [many restrictions](https://stackoverflow.com/a/8123973) which make them much less useful.
 
-
 ## Immutable Values
 
-If we limit ourselves to only pure functions, mutability is no longer very useful. Functions can't access anything but their arguments, and those can't be modified. This means that mutability is confined only to function bodies, where it can serve as a convenience. Some languages use function calls instead of `for` and `while` loops, which prevents also the few remaining use-cases for mutable values.
+If we limit ourselves to only pure functions, mutability is no longer very useful. Functions can't access anything but their arguments, and those can't be modified. This means that mutability is confined only to function bodies, where it can serve as a convenience. Some languages use function calls instead of `for` and `while` loops, which prevents the few remaining use-cases for mutable values. Immutability follows naturally from the other functional programming concepts we discussed earlier.
 
-Mutable output arguments can be used in addition to return values. I don't see a problem with this alternative, as long as mutable arguments are explicitly marked. It doesn't weaken the expresiveness of function signatures and can be used, for example, to achieve greater performance. In Rust, mutable arguments are marked in the function signatures **and** at the call-sites, which makes the flow of information very obvious.
+That said, mutable output arguments can be useful. I don't see a problem with this alternative, as long as they are explicitly marked. It doesn't weaken the expresiveness of function signatures and can be used, for example, to achieve greater performance. In Rust, mutable arguments are marked in the function signatures **and** at the call-sites, which makes information flow very obvious.
 
-## Conclusion
+## Higher-order Functions
 
-We have seen how the characteristics of functional programming arise from insisting on descriptive types. Using the type system to its full potential decreases the number of bugs and allows one write code much more confidently.
+There is probably an argument for how common HOFs like map, filter, or reduce help enhance type safety, but this article is too long already so I'm going to take the easy way out.
 
-The main take-away is that functional programming does one thing better than other approaches: type system utilization. This doesn't mean that FP is overall better for software development. Perhaps in the process of being pedantic with types we arrived at a paradigm that is too impractical for everyday use.
-
-Showing that this is not the case, and showing how effectful systems can be written in a purely functional style may be the topic of a future blog post.
-
-[^1]: If I'm wrong on this, please point it out in the comments.
-[^2]: C++ equivalent could exhibit undefined behavior if some of the invariants were broken.
-[^3]: There is typically more information such as checked exceptions, value mutability, etc.
-
-
-<!--
-
-## Other Options
-
-We could achieve some of our goals by using other language features, not just types. For example, nullable types are sometimes a language primitive (Kotlin, Swift, SQL). Errors can be signalized using exceptions instead of return types (Java, C++). I would argue that both of these approaches are simultaneously more complex and less powerful than a type-based system. I will not go in depth on this topic, however, since this article is long enough as it is.
-
-Mutable output arguments can be used in addition to return values. I don't see any problem with this alternative, as long as these arguments are explicitly marked.
+The use of higher-order functions (HOFs) in functional programming can be seen as the consequence of the above features. Functional purity forces the use of HOFs to describe even simple concepts like sequential actions. And because of pure functions and algebraic laws, it is safe and pleasant to work with HOFs. This leads to HOFs being used pervasively in functional programming, and thus, being associcated with functional style.
 
 ## Notes on OOP
 
 Object oriented programming encourages both imprecise data types, and non-descriptive functional signatures.
 
-**Imprecise data types** arise because classes frequently contain **many** fields. This is caused by:
+**Imprecise data types** arise because classes frequently contain many fields which themselves are poorly typed. This is caused by:
 
-* OOP mental model of (thing == instance) is often not granular enough.
+* OOP mental model of "thing == instance" is often not granular enough.
 * Uninitialized states [are sometimes unavoidable](https://250bpm.com/blog:4/).
-* References to other classes bring in their fields too.
 * Nullability pervasiveness in mainstream OOP languages.
 * Inheritance brings unnecessary baggage.
 
-Often, tons invalid states are possible in classes. Keeping state consistent is a **major** challenge.
+Often, tons invalid states are possible in classes, and keeping everything consistent is a **major** challenge.
 
-**Non-descriptive functional signatures** are given by the fact that functions have blanket access to instance variables. This is the same as passing in a bunch of mostly unnecessary arguments, which goes against descriptive function types. Worse, functions may work mainly through instance state manipulation instead of through return values. This leads to non-descriptive types, and by trying to compensate, to overly descriptive names. Ever seen code like this?
+**Non-descriptive functional signatures** are given by the fact that functions have blanket access to instance variables. This is the same as passing in a bunch of mostly unnecessary arguments, which goes against descriptive function types. Worse, functions may work mainly through instance state manipulation instead of through return values. This leads to non-descriptive types, and by trying to compensate, to overly descriptive names. Ever seen code that looks like this excerpt from Clean Code?
 
 ```java
 private void includeSetupAndTeardownPages() throws Exception {
@@ -315,14 +290,17 @@ private void includeSetupPage() throws Exception {
 }
 ```
 
-Notice how function signatures are devoid of any information - every function has the exact same signature! Any of the statements can be duplicated, omitted, or rearranged without the compiler complaining. Control flow is fully implicit and the type system is all but useless. Luckily, this hardcore OOP style [is on the decline](https://qntm.org/clean).
+Notice how function signatures are devoid of any information - every function has the exact same signature! Any of the statements can be duplicated, deleted, or rearranged without the compiler complaining. Control flow is fully implicit and the type system is all but useless. Luckily, this hardcore OOP style [is on the decline](https://qntm.org/clean).
 
-In a purely functional setting, this can't happen. Any pure function which returns `void` is useless since it conveys no information in its return value. As a rule of thumb, even in non purely functional setting, `void`-returning functions should rarely be used.
+In a purely functional setting, this can't happen. Any pure function which returns `void` is useless since it conveys no information in its return value. As a rule of thumb, even in non purely functional setting, `void`-returning functions should probably rarely be used.
 
-## Methods and OOP
 
-Class methods^[also known as instance functions], often suffer from very non-descriptive signatures, but the problem is opposite to what we saw before. Instead of failing to specify some prerequisites as arguments, they specify *more than they need*. Methods can access all the instance variables. This gives them a large surface they can work on, which often leads to non-obvious information flow, where the principal function effects are not their return values, but rather mutations of object state. With large objects, the number of possible states grow exponentially, and the probability that all of them are handled correctly by all functions is low.
+## Conclusion
 
-TODO: example of an OOP interface which is hard to follow. Perhaps from Clean Code, or something.
+We have seen how different characteristics of functional programming arise from insisting on descriptive types. The main take-away is that functional programming does one thing better than other approaches: it better utilizes the type system.
 
--->
+This doesn't mean that FP is overall better for software development. Perhaps in the process of being pedantic with types we arrived at a paradigm that is too impractical for everyday use. Discussing whether this the case, and showing how effectful systems can be written in a purely functional style may be the topic of a future blog post.
+
+[^1]: If I'm wrong on this, please point it out in the comments.
+[^2]: C++ equivalent could exhibit undefined behavior if some of the invariants were broken.
+[^3]: There is typically more information such as checked exceptions, value mutability, etc.
