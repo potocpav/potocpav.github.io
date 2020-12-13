@@ -27,7 +27,6 @@ It turns out that all of the above points can be derived from a single design ru
 
 <style>
 .banner {
-    font-weight: bold;
     font-size: larger;
     padding: 0.5rem;
     margin: 1rem;
@@ -36,7 +35,7 @@ It turns out that all of the above points can be derived from a single design ru
 }
 </style>
 <p style="font-weight: bold; font-size: larger; padding: 0.5rem; margin: 1rem; border: 1px solid black; text-align: center;" class="banner">
-Functional programming is the consequence of using types to precisely encode program semantics.
+<b>Functional programming is the consequence of using types to precisely encode program semantics.</b>
 </p>
 
 If you agree that type systems should be used to their full potential, functional programming is not much of a paradigm - it is rather just a natural consequence. And it is quite uncontroversial to see that type systems should be wielded efficiently to prevent bugs and maximize correctness. That's, after all, precisely what they were designed to do in the first place.
@@ -135,7 +134,7 @@ Rust enumerations are algebraic data types, and they enable us to model semantic
 ADTs are a way to precisely model type semantics. Without proof[^1], I will assert that they are actually the **only** way: you need a construct of (at least) equivalent power to hope for precise types. This would mean that we have the first piece of the puzzle:
 
 <p class="banner">
-ADTs are the consequence of using types to precisely encode program semantics.
+<b>ADTs</b> are the consequence of using types to precisely encode program semantics.
 </p>
 
 ## Pure Functions
