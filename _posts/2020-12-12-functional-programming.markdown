@@ -101,11 +101,13 @@ Consider what needs to be ensured for `json` to represent a valid JSON value:
 * For a string, array, and object, `json_value` must be a valid pointer.
 * Above points must be satisfied on all depth levels, since `json` is a tree structure.
 
-These requirements are commonly known as **invariants**, and they are precisely the **rules that aren't captured by the type system**; they must be upheld by the programmer. Indeed, the `json` library [documents some of them in comments](https://github.com/nlohmann/json/blob/97fe455ad5dd889ed30cf23bc735bb038ef67435/include/nlohmann/json.hpp#L150-L155) and provides [functions to check their validity](https://github.com/nlohmann/json/blob/97fe455ad5dd889ed30cf23bc735bb038ef67435/include/nlohmann/json.hpp#L1227-L1233). To further facilitate safety, `m_type` and `m_value` are private, so only code internal to the JSON library must be careful about invariants.
+These requirements are commonly known as **invariants**, and they are precisely the **rules that aren't captured by the type system**; they must be upheld by the programmer. Indeed, the `json` library [documents some of them in comments](https://github.com/nlohmann/json/blob/97fe455ad5dd889ed30cf23bc735bb038ef67435/include/nlohmann/json.hpp#L150-L155) and provides [functions to check their validity](https://github.com/nlohmann/json/blob/97fe455ad5dd889ed30cf23bc735bb038ef67435/include/nlohmann/json.hpp#L1227-L1233). To further facilitate safety, `m_type` and `m_value` are private, so only the code inside the JSON library must be careful about invariants.
 
-This a compromise rather than the ideal case. We must trust the library internals to correctly uphold all the invariants. Nlohmann's JSON library contains more than 10,000 lines of code with access to the private fields of `json`, so this is definitely not a trivial concern!
+This a compromise rather than the ideal case. We must trust that library internals correctly uphold all the invariants. Nlohmann's JSON library contains more than 10,000 lines of code with access to the private fields of `json`, so this is definitely not a trivial concern!
 
-Invariants arise from the inability of the type system. If we were able to construct a type which contains **only** valid JSON values, all these problems would disappear. We could expose data directly, since every value is valid by construction. There is no longer a trusted code-base, no assertions, tests or comments about invariants, we only need to trust the type-checker. Behold the Rust JSON representation, adapted from the canonical [serde library](https://github.com/serde-rs/json):
+Invariants arise from the inability of the type system. If we were able to construct a type which contains **only** valid JSON values, all these problems would disappear. We could expose data directly, since every value is valid by construction. There is no longer a trusted code-base, no assertions, tests or comments about invariants, we only need to trust the type-checker.
+
+Behold the Rust JSON representation, adapted from the canonical [serde library](https://github.com/serde-rs/json):
 
 ```rust
 pub enum Json {
@@ -119,7 +121,7 @@ pub enum Json {
 }
 ```
 
-Rust `enum` is an union type which contains precisely one of the listed options:
+Rust `enum` is an union type which contains precisely one of the specified alternatives:
 
 * Either a `Null`,
 * or a `Bool` with a single `bool` value,
