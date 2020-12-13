@@ -8,7 +8,6 @@ categories: programming
 <style>
 body {
     font-size: 1.1em !important;
-    line-height: 1.5em !important;
 }
 </style>
 
