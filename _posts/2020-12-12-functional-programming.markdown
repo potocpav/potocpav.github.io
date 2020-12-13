@@ -15,9 +15,9 @@ body {
 Functional programming (FP) is, similarly to other programming paradigms, quite difficult to pin down. Instead of having a clear definition, these characteristics are commonly associated with functional style:
 
 * Functions are treated as first-class citizens. They are frequently passed as arguments to other functions.
-* Immutable values are preferred over mutable values.
-* Algebraic data types and pattern matching.
 * Functions are pure. They are deterministic and side-effect-free, similarly to mathematical functions.
+* Use of algebraic data types and pattern matching.
+* Immutable values are preferred over mutable values.
 * Algebraic structures are used as abstractions.
 
 
