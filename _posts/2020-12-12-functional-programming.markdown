@@ -67,7 +67,7 @@ What we don't want is a JSON value with a fine print attached:
 JSON json;
 ```
 
-We can have a look at how this is done in practice. Here is how one might represent a JSON value in C++. Code is adapted and simplified from the popular [nlohmann's JSON library](https://github.com/nlohmann/json):
+We can have a look at how this is acnieved in practice. Here is how one might represent a JSON value in C++. Code is adapted and simplified from the popular [nlohmann's JSON library](https://github.com/nlohmann/json):
 
 ```c++
 enum class value_t {
