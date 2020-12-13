@@ -98,7 +98,7 @@ Consider what needs to be ensured for `json` to represent a valid JSON value:
 
 These requirements are commonly known as **invariants**, and they are precisely the **rules that aren't captured by the type system**; they must be upheld by the programmer. Indeed, the `json` library [documents some of them in comments](https://github.com/nlohmann/json/blob/97fe455ad5dd889ed30cf23bc735bb038ef67435/include/nlohmann/json.hpp#L150-L155) and provides [functions to check their validity](https://github.com/nlohmann/json/blob/97fe455ad5dd889ed30cf23bc735bb038ef67435/include/nlohmann/json.hpp#L1227-L1233). To further facilitate safety, `m_type` and `m_value` are private, so only the code inside the JSON library must be careful about invariants.
 
-This is a compromise rather than the ideal case. We must trust that library internals correctly uphold all the invariants. Nlohmann's JSON library contains thousands of lines of code with access to the private fields of `json`, so this is definitely not a trivial concern!
+This is a compromise rather than the ideal case. We must trust library internals to correctly uphold all the invariants. Nlohmann's JSON library contains thousands of lines of code with access to the private fields of `json`, so this is definitely not a trivial concern!
 
 Invariants arise from the inability of the type system. If we were able to construct a type which contains **only** valid JSON values, all these problems would disappear. We could expose data directly, since every value is valid by construction. There is no longer a trusted code-base, no assertions, tests or comments about invariants, we only need to trust the type-checker.
 
