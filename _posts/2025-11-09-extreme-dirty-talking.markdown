@@ -5,11 +5,9 @@ date:   2025-11-09 08:00:00 +0100
 categories: life
 ---
 
-Copied from: [Extreme Dirty Talking](https://www.reddit.com/r/BDSMcommunity/comments/4vsqxz/extreme_dirty_talking_and_you_a_guide_v30/)
+*Copied from: [Extreme Dirty Talking](https://www.reddit.com/r/BDSMcommunity/comments/4vsqxz/extreme_dirty_talking_and_you_a_guide_v30/)*
 
-----
-
-### One day...
+#### One day...
 
 It struck me just how much I enjoyed talking dirty. It wasn't enough to just describe what I was going to do, or listen to how great I was, I wanted things to get _extraordinarily_ nasty. Honestly, subs who can please me on this front have been few and far between and I believe it is the responsibility of the top/dominant/sir/ma'am/domme/daddy/mommy/master/whatever to educate and train (at appropriate times).
 
@@ -19,7 +17,7 @@ From previous partners (both vanilla and kinky) I've enjoyed hearing about every
 
 When it comes to dirty talk: don't restrict yourself or second guess what is valid; sharing is caring, experience is the greatest teacher, knowledge is power.
 
-### But, why dirty talk?
+#### But, why dirty talk?
 
 If I boil it down it goes like this: two parts. Part one: this kind of dirty talk serves the ego. And it does it in two ways. First, it lets me know what an amazing Dominant I am. Second, you saying these things is 'slutty' and 'dirty.' Now, not only am I an amazing Dominant, but this slutty girl (slutty implies high-experience and demanding libido, things that other males value) not only wants/desires/needs me, but chose (choice being sexier than force or coercion) me to be her Dominant.
 
@@ -31,7 +29,7 @@ Now my brand of dirty talk is all about degrading and humiliating my bottom, not
 
 We’ve covered my personal interest, and my ideas of general interest. Now we come to the actual **how to** section of this guide. It’s broken up into two parts. The first are the four rules, start with number 1 and once you feel you’ve mastered and taken all you can from it, work your way down the list.
 
-### **Rule No. 1**: *Say Anything*
+#### **Rule No. 1**: *Say Anything*
 
 We all have to start somewhere whether it’s ‘that feels good,’ ‘fuck me,’ or ‘use this filthy fuck slut!’ you’ve gotta have a base of what to say. Think about this, write things down you can say, find porn where there is a lot of dirty talk (I’d recommend stuff with Jenna Haze if you’re a girl, and for a guy... James Dean is pretty good) and copy them.
 
@@ -43,7 +41,7 @@ Another train of thought to follow is Dan Savage's gonna do, doing, did.
 2. Say what you're doing (I'm fucking you so hard!)
 3. Say what you did (I fucked you so hard!)
 
-### **Rule No. 2**: *Repeat*
+#### **Rule No. 2**: *Repeat*
 
 Now that you have some ground work (or maybe you are working off your partner who already has) it’s time to make things stupid-easy. Just repeat the premise of whatever they said. Do this until you feel you’ve mastered it, but it will seriously help you up your game, as well as not have to devote a ton of mind power to constantly being fresh which is hard for beginners.
 
@@ -65,7 +63,7 @@ You respond:
 
 For dominants repeating, I’d recommend providing whatever variation you can on it, at the end of the day, you do you.
 
-### **Rule No. 3**: *Escalate*
+#### **Rule No. 3**: *Escalate*
 
 You’ve got a base, you have repetition in your tool box so you can use that when you need to. Now it’s time for escalation. You want dirty talk to go to eleven. This is hopefully as easy as the repetition, and can be combined as well. Using the example from repetition, I say to my sub:
 
@@ -83,11 +81,11 @@ The dom’s response
 
 > You live to fuck my cock, slut, you need it every day!’
 
-### **Rule No. 4**: *Variation*
+#### **Rule No. 4**: *Variation*
 
 Try not to, though we all have favorites, repeat too much. Don't use a word or phrase over and over and over and... well, you get it. Variety is the spice of life and also the spice of extreme dirty talk. That said, we have favorites. For me it’s the title slut, and the modifier little. Switching things up, weaving in and out, creates a symphony. I don’t think many people want to hear the same key on a piano played over and over.
 
-### **Rule No. 5**: *Creativity*
+#### **Rule No. 5**: *Creativity*
 
 By now you've gotten into the swing of things and no longer need your partner to guide you or give you something to repeat.
 
@@ -95,7 +93,7 @@ Time to get creative, step outside your box (vagina joke) and see what you come 
 
 Creative wise, or even just building basic dirty talk, you'll want to start with these categories.
 
-### **Confess**:
+#### **Confess**:
 
 Revealing a secret, whether it be one from the past, or present. Or just making a blanket statement is cool too.
 
@@ -109,7 +107,7 @@ Dom example:
 
 It’s a simple statement, but you’re still confessing something. Confessions don’t have to be big or grandiose.
 
-### **Request**:
+#### **Request**:
 
 Beg, plead, desperately (or confidently) request something.
 
@@ -121,7 +119,7 @@ Dom Example:
 
 > ‘Now, will you please get on your knees like a good girl, bend over and show me those fuck holes.’
 
-### **Demand**:
+#### **Demand**:
 
 The opposite of requesting, but equally as exciting.
 
@@ -133,7 +131,7 @@ Dom Example:
 
 > ‘Take my cock down your throat right now, slut!’
 
-### **Compliment**:
+#### **Compliment**:
 
 Who don't love themselves some compliment?
 
@@ -145,7 +143,7 @@ Dom Example:
 
 > ‘You have such a perfect little ass, and I love the way it serves me.’
 
-### **Worship**:
+#### **Worship**:
 
 This is, to an extent, just an extreme version of compliment. Worship is defined as:
 
@@ -153,7 +151,7 @@ This is, to an extent, just an extreme version of compliment. Worship is defined
 
 Try and take that on when you worship, appreciate that person as a goddess/god.
 
-### **Reluctance**:
+#### **Reluctance**:
 
 Something I recently discovered and really turns me on.
 
@@ -167,7 +165,7 @@ Dom Example:
 
 They meld a bit with requests, confessions, et cetera, but that’s okay. Combine and see what you get. (Credit to u/01291987 for sub examples)
 
-### **Resistance**:
+#### **Resistance**:
 
 This can be sarcasm, or playful banter, or flat out resistance as a means of escalation. I personally don't enjoy this in my dirty talk, but if you enjoy playing with or as a brat, this is a major piece.
 
