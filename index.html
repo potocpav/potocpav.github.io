@@ -1,0 +1,96 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Pavel Potoček</title>
+<meta name="description" content="Projects and posts by Pavel Potoček.">
+<style>
+  :root {
+    --bg: #fbfaf8;
+    --fg: #1d1d1f;
+    --muted: #6b6b70;
+    --rule: #e4e2dd;
+    --link: #1f5fbf;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --bg: #161618;
+      --fg: #e8e8ea;
+      --muted: #9a9aa0;
+      --rule: #2c2c30;
+      --link: #7fb0ff;
+    }
+  }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0;
+    background: var(--bg);
+    color: var(--fg);
+    font: 17px/1.55 system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  }
+  main { max-width: 42rem; margin: 0 auto; padding: 4rem 1rem 3rem; }
+  h1 { font-size: 1.9rem; margin: 0 0 .25rem; letter-spacing: -.01em; }
+  .intro { color: var(--muted); margin: 0 0 3rem; }
+  a { color: var(--link); text-decoration: none; }
+  a:hover { text-decoration: underline; }
+  ul { list-style: none; padding: 0; margin: 0; }
+  li { padding: 1.25rem 0; border-top: 1px solid var(--rule); }
+  li:last-child { border-bottom: 1px solid var(--rule); }
+  h2 { font-size: 1.15rem; margin: 0 0 .3rem; }
+  p { margin: 0; }
+  .meta { margin-top: .4rem; font-size: .9rem; color: var(--muted); }
+  .meta a { color: var(--muted); }
+  footer { margin-top: 3rem; font-size: .9rem; color: var(--muted); }
+  footer a { color: var(--muted); }
+</style>
+</head>
+<body>
+<main>
+  <h1>Pavel Potoček</h1>
+  <p class="intro">Posts, interactive models, and other projects.</p>
+
+  <ul>
+    <li>
+      <h2><a href="https://potocpav.github.io/rope-twist/">How Climbing Ropes Twist</a></h2>
+      <p>Why a climbing rope gets twisted, explained in a blog post with interactive visualizations.</p>
+      <div class="meta"><a href="https://github.com/potocpav/rope-twist">source</a></div>
+    </li>
+    <li>
+      <h2><a href="https://github.com/potocpav/flat-earth">Actually Correct Flat-Earth Model</a></h2>
+      <p>Instead of a round Earth in flat space, a flat Earth in round space. A tongue-in-cheek coordinate transformation that still gets the physics right, with the Artemis trajectory plotted as “proof”.</p>
+      <div class="meta"><a href="https://www.reddit.com/r/flatearth/comments/1sey3nh/behold_an_actually_correct_flat_earth_model/">Reddit post</a></div>
+    </li>
+    <li>
+      <h2><a href="https://potocpav.github.io/activity-tracker/">Activity Tracker</a></h2>
+      <p>An ad-free, open-source Android app for tracking any metric over time, from body weight to bowling scores, with custom statistics and charts. Your data stays on your device.</p>
+      <div class="meta"><a href="https://github.com/potocpav/activity-tracker">source</a> · <a href="https://play.google.com/store/apps/details?id=com.pavelpotocek.activitytracker">Google Play</a></div>
+    </li>
+    <li>
+      <h2><a href="https://potocpav.github.io/climbing-model/">Simple Climber Model</a></h2>
+      <p>An interactive app that shows the forces acting on a climber.</p>
+      <div class="meta"><a href="https://github.com/potocpav/climbing-model">source</a></div>
+    </li>
+    <li>
+      <h2><a href="https://github.com/potocpav/python-concur">Python Concur</a></h2>
+      <p>A Python GUI framework built on synchronous generators, on top of Dear ImGui. Well suited to debugging, prototyping, and data-analysis tools.</p>
+      <div class="meta"><a href="https://potocpav.github.io/python-concur-docs/master/">API reference</a> · <a href="https://pypi.org/project/concur/">PyPI</a></div>
+    </li>
+    <li>
+      <h2><a href="https://potocpav.github.io/general-relativity/">General Relativity Playground</a></h2>
+      <p>An interactive general relativity playground in 2+1 dimensions.</p>
+      <div class="meta"><a href="https://github.com/potocpav/general-relativity">source</a></div>
+    </li>
+    <li>
+      <h2><a href="https://github.com/scrive/elm-json-forms">Elm JSON Forms</a></h2>
+      <p>An Elm library that generates validating forms from JSON Schema and UI Schema.</p>
+      <div class="meta"><a href="https://scrive.github.io/elm-json-forms/">live example</a> · <a href="https://package.elm-lang.org/packages/scrive/elm-json-forms/latest">Elm package</a></div>
+    </li>
+  </ul>
+
+  <footer>
+    <a href="https://github.com/potocpav">GitHub</a> · <a href="https://potocpav.github.io/zettelkasten/">Notes</a>
+  </footer>
+</main>
+</body>
+</html>
