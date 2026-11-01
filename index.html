@@ -35,7 +35,13 @@
   a { color: var(--link); text-decoration: none; }
   a:hover { text-decoration: underline; }
   ul { list-style: none; padding: 0; margin: 0; }
-  li { padding: 1.25rem 0; border-top: 1px solid var(--rule); }
+  li { padding: 1.25rem 0; border-top: 1px solid var(--rule);
+       display: grid; grid-template-columns: 10rem 1fr; gap: 1.25rem; align-items: start; }
+  .thumb img { display: block; width: 100%; height: auto; border-radius: 6px;
+               border: 1px solid var(--rule); }
+  @media (max-width: 520px) {
+    li { grid-template-columns: 1fr; gap: .75rem; }
+  }
   li:last-child { border-bottom: 1px solid var(--rule); }
   h2 { font-size: 1.15rem; margin: 0 0 .3rem; }
   p { margin: 0; }
@@ -52,39 +58,60 @@
 
   <ul>
     <li>
-      <h2><a href="https://potocpav.github.io/rope-twist/">How Climbing Ropes Twist</a></h2>
-      <p>Why a climbing rope gets twisted, explained in a blog post with interactive visualizations.</p>
-      <div class="meta"><a href="https://github.com/potocpav/rope-twist">source</a></div>
+      <a class="thumb" href="https://potocpav.github.io/rope-twist/" tabindex="-1" aria-hidden="true"><img src="thumbs/rope-twist.jpg" alt="" width="480" height="300" loading="lazy"></a>
+      <div>
+        <h2><a href="https://potocpav.github.io/rope-twist/">How Climbing Ropes Twist</a></h2>
+        <p>Why a climbing rope gets twisted, explained in a blog post with interactive visualizations.</p>
+        <div class="meta"><a href="https://github.com/potocpav/rope-twist">source</a></div>
+      </div>
     </li>
     <li>
-      <h2><a href="https://github.com/potocpav/flat-earth">Actually Correct Flat-Earth Model</a></h2>
-      <p>Instead of a round Earth in flat space, a flat Earth in round space. A tongue-in-cheek coordinate transformation that still gets the physics right, with the Artemis trajectory plotted as “proof”.</p>
-      <div class="meta"><a href="https://www.reddit.com/r/flatearth/comments/1sey3nh/behold_an_actually_correct_flat_earth_model/">Reddit post</a></div>
+      <a class="thumb" href="https://github.com/potocpav/flat-earth" tabindex="-1" aria-hidden="true"><img src="thumbs/flat-earth.jpg" alt="" width="480" height="300" loading="lazy"></a>
+      <div>
+        <h2><a href="https://github.com/potocpav/flat-earth">Actually Correct Flat-Earth Model</a></h2>
+        <p>Instead of a round Earth in flat space, a flat Earth in round space. A tongue-in-cheek coordinate transformation that still gets the physics right, with the Artemis trajectory plotted as “proof”.</p>
+        <div class="meta"><a href="https://www.reddit.com/r/flatearth/comments/1sey3nh/behold_an_actually_correct_flat_earth_model/">Reddit post</a></div>
+      </div>
     </li>
     <li>
-      <h2><a href="https://github.com/potocpav/activity-tracker">Activity Tracker</a></h2>
-      <p>An ad-free, open-source Android app for tracking any metric over time, from body weight to bowling scores, with custom statistics and charts. Your data stays on your device.</p>
-      <div class="meta"><a href="https://play.google.com/store/apps/details?id=com.pavelpotocek.activitytracker">Google Play</a></div>
+      <a class="thumb" href="https://github.com/potocpav/activity-tracker" tabindex="-1" aria-hidden="true"><img src="thumbs/activity-tracker.jpg" alt="" width="480" height="300" loading="lazy"></a>
+      <div>
+        <h2><a href="https://github.com/potocpav/activity-tracker">Activity Tracker</a></h2>
+        <p>An ad-free, open-source Android app for tracking any metric over time, from body weight to bowling scores, with custom statistics and charts. Your data stays on your device.</p>
+        <div class="meta"><a href="https://play.google.com/store/apps/details?id=com.pavelpotocek.activitytracker">Google Play</a></div>
+      </div>
     </li>
     <li>
-      <h2><a href="https://potocpav.github.io/climbing-model/">Simple Climber Model</a></h2>
-      <p>An interactive app that shows the forces acting on a climber.</p>
-      <div class="meta"><a href="https://github.com/potocpav/climbing-model">source</a></div>
+      <a class="thumb" href="https://potocpav.github.io/climbing-model/" tabindex="-1" aria-hidden="true"><img src="thumbs/climbing-model.jpg" alt="" width="480" height="300" loading="lazy"></a>
+      <div>
+        <h2><a href="https://potocpav.github.io/climbing-model/">Simple Climber Model</a></h2>
+        <p>An interactive app that shows the forces acting on a climber.</p>
+        <div class="meta"><a href="https://github.com/potocpav/climbing-model">source</a></div>
+      </div>
     </li>
     <li>
-      <h2><a href="https://potocpav.github.io/general-relativity/">General Relativity Playground</a></h2>
-      <p>An interactive general relativity playground in 2+1 dimensions.</p>
-      <div class="meta"><a href="https://github.com/potocpav/general-relativity">source</a></div>
+      <a class="thumb" href="https://potocpav.github.io/general-relativity/" tabindex="-1" aria-hidden="true"><img src="thumbs/general-relativity.jpg" alt="" width="480" height="300" loading="lazy"></a>
+      <div>
+        <h2><a href="https://potocpav.github.io/general-relativity/">General Relativity Playground</a></h2>
+        <p>An interactive general relativity playground in 2+1 dimensions.</p>
+        <div class="meta"><a href="https://github.com/potocpav/general-relativity">source</a></div>
+      </div>
     </li>
     <li>
-      <h2><a href="https://github.com/potocpav/python-concur">Python Concur</a></h2>
-      <p>A Python GUI framework built on synchronous generators, on top of Dear ImGui. Well suited to debugging, prototyping, and data-analysis tools.</p>
-      <div class="meta"><a href="https://potocpav.github.io/python-concur-docs/master/">API reference</a> · <a href="https://pypi.org/project/concur/">PyPI</a></div>
+      <a class="thumb" href="https://github.com/potocpav/python-concur" tabindex="-1" aria-hidden="true"><img src="thumbs/python-concur.jpg" alt="" width="480" height="300" loading="lazy"></a>
+      <div>
+        <h2><a href="https://github.com/potocpav/python-concur">Python Concur</a></h2>
+        <p>A Python GUI framework built on synchronous generators, on top of Dear ImGui. Well suited to debugging, prototyping, and data-analysis tools.</p>
+        <div class="meta"><a href="https://potocpav.github.io/python-concur-docs/master/">API reference</a> · <a href="https://pypi.org/project/concur/">PyPI</a></div>
+      </div>
     </li>
     <li>
-      <h2><a href="https://github.com/scrive/elm-json-forms">Elm JSON Forms</a></h2>
-      <p>An Elm library that generates validating forms from JSON Schema and UI Schema.</p>
-      <div class="meta"><a href="https://scrive.github.io/elm-json-forms/">live example</a> · <a href="https://package.elm-lang.org/packages/scrive/elm-json-forms/latest">Elm package</a></div>
+      <a class="thumb" href="https://github.com/scrive/elm-json-forms" tabindex="-1" aria-hidden="true"><img src="thumbs/elm-json-forms.jpg" alt="" width="480" height="300" loading="lazy"></a>
+      <div>
+        <h2><a href="https://github.com/scrive/elm-json-forms">Elm JSON Forms</a></h2>
+        <p>An Elm library that generates validating forms from JSON Schema and UI Schema.</p>
+        <div class="meta"><a href="https://scrive.github.io/elm-json-forms/">live example</a> · <a href="https://package.elm-lang.org/packages/scrive/elm-json-forms/latest">Elm package</a></div>
+      </div>
     </li>
   </ul>
 
